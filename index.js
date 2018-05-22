@@ -20,7 +20,7 @@ function forkRepo() {
     method: 'POST',
     headers: {
       'Authorization': `token ${token}`
-      // Content-Type: 'application/json'
+      Content-Type: 'application/json'
     }
   }).then(res => res.json()).then(json => showResults(json));
 }
@@ -28,5 +28,5 @@ function forkRepo() {
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return 'ee5d92a732e05124e53fdfe71b6a5559bf773142'
+  return '460493ff25c7cdc34549ad97de7ea9484eafc584'
 }
