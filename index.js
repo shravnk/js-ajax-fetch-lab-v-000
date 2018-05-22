@@ -1,25 +1,56 @@
-function getIssues() {
+const baseURL = 'https://api.github.com'
+const owner = 'shravnk'
+const repo = 'javascript-fetch-lab'
 
+function getIssues() {
+  const url = `${baseURL}/repos/${owner}/${repo}/issues`
+  fetch(url)
+  .then(resp => resp.json())
+  .then(json => showIssues(json))
 }
 
 function showIssues(json) {
+  $('#issues').html(renderIssues(json))
+}
+
+function renderIssues(json) {
+  return json.map(issue => {
+    return `
+      <h1>Title: ${issue.title}</h1><br>
+      <p>Body: ${issue.body}</p>
+    `
+  })
 }
 
 function createIssue() {
+  const url = `${baseURL}/repos/${owner}/${repo}/issues`
+  const postData = {
+    title: document.getElementById('title').value,
+    body: document.getElementById('body').value
+  }
+
+  fetch(url, {
+    method: 'post',
+    headers: {
+      'Authorization': `token ${getToken()}`
+    },
+    body: JSON.stringify(postData)
+  }).then(res => res.json()).then(json => getIssues())
 }
 
 function showResults(json) {
-  $("#results").html(`<a href="${json.html_url}">Visit Fork Page</a>`)
+  // console.log(json);
+  const link = `<a href="${json.html_url}">Repository URL</a>`
+  console.log(link);
+  $('#results').html(link)
 }
 
 function forkRepo() {
-  const token = getToken()
-  const repo = 'learn-co-curriculum/javascript-fetch-lab'
-  const link = `https://api.github.com/repos/${repo}/forks`
-  fetch(link, {
+  const url = `${baseURL}/repos/learn-co-curriculum/javascript-fetch-lab/forks`
+  fetch(url, {
     method: 'post',
     headers: {
-      Authorization: `token ${token}`
+      'Authorization': `token ${getToken()}`
     }
   }).then(res => res.json()).then(json => showResults(json));
 }
@@ -27,5 +58,5 @@ function forkRepo() {
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return '478051c5bd3d221b5e9b8210d0b499d2ca57c938'
+  return ``
 }
