@@ -1,7 +1,7 @@
 const baseURL = 'https://api.github.com'
 const owner = 'jacobsilver2'
 const repo = 'javascript-fetch-lab'
-const token = 'cc88d391dac23e8773dcf5a7609c32a18993dcb1'
+const token = '460493ff25c7cdc34549ad97de7ea9484eafc584'
 const fakeToken = ''
 
 function getIssues() {
