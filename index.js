@@ -51,10 +51,7 @@ function forkRepo() {
   fetch(url, {
     method: 'post',
     headers: {
-      Host: api.github.com
-'Authorization': `token ${getToken()}`
-
-
+      'Authorization': `token ${getToken()}`
     }
   }).then(res => res.json()).then(json => showResults(json));
 }
