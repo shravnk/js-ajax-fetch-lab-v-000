@@ -19,7 +19,7 @@ function forkRepo() {
   fetch(link, {
     method: 'POST',
     headers: {
-      Authorization: `token ${token}`
+      'Authorization': `token ${token}`
       // Content-Type: 'application/json'
     }
   }).then(res => res.json()).then(json => showResults(json));
