@@ -1,8 +1,7 @@
 const baseURL = 'https://api.github.com'
 const owner = 'jacobsilver2'
 const repo = 'javascript-fetch-lab'
-const token = '460493ff25c7cdc34549ad97de7ea9484eafc584'
-const fakeToken = ''
+
 
 function getIssues() {
   const url = `${baseURL}/repos/${owner}/${repo}/issues`
@@ -60,5 +59,5 @@ function forkRepo() {
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return `${token}`
+  return `460493ff25c7cdc34549ad97de7ea9484eafc584`
 }
