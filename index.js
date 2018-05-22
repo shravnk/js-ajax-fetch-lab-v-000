@@ -1,7 +1,6 @@
 const baseURL = 'https://api.github.com'
-const owner = 'jacobsilver2'
+const owner = 'shravnk'
 const repo = 'javascript-fetch-lab'
-
 
 function getIssues() {
   const url = `${baseURL}/repos/${owner}/${repo}/issues`
