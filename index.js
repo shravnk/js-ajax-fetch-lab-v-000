@@ -1,26 +1,58 @@
-function getIssues() {
+const baseURL = 'https://api.github.com'
+const owner = 'jacobsilver2'
+const repo = 'javascript-fetch-lab'
+const token = 'cc88d391dac23e8773dcf5a7609c32a18993dcb1'
+const fakeToken = ''
 
+function getIssues() {
+  const url = `${baseURL}/repos/${owner}/${repo}/issues`
+  fetch(url)
+  .then(resp => resp.json())
+  .then(json => showIssues(json))
 }
 
 function showIssues(json) {
+  $('#issues').html(renderIssues(json))
+}
+
+function renderIssues(json) {
+  return json.map(issue => {
+    return `
+      <h1>Title: ${issue.title}</h1><br>
+      <p>Body: ${issue.body}</p>
+    `
+  })
 }
 
 function createIssue() {
+  const url = `${baseURL}/repos/${owner}/${repo}/issues`
+  const postData = {
+    title: document.getElementById('title').value,
+    body: document.getElementById('body').value
+  }
+
+  fetch(url, {
+    method: 'post',
+    headers: {
+      'Authorization': `token ${getToken()}`
+    },
+    body: JSON.stringify(postData)
+  }).then(res => res.json()).then(json => getIssues())
 }
 
 function showResults(json) {
-  $("#results").html(`<a href="${json.html_url}">Visit Fork Page</a>`)
+  // console.log(json);
+  const link = `<a href="${json.html_url}">Repository URL</a>`
+  console.log(link);
+  $('#results').html(link)
 }
 
 function forkRepo() {
-  const token = getToken()
-  const repo = 'learn-co-curriculum/javascript-fetch-lab'
-  const link = `https://api.github.com/repos/${repo}/forks`
-  fetch(link, {
-    method: 'POST',
+  const url = `${baseURL}/repos/learn-co-curriculum/javascript-fetch-lab/forks`
+  fetch(url, {
+    method: 'post',
     headers: {
-      'Authorization': `token ${token}`
-      Content-Type: 'application/json'
+      Authorization: `token ${getToken()}`
     }
   }).then(res => res.json()).then(json => showResults(json));
 }
@@ -28,5 +60,5 @@ function forkRepo() {
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return '460493ff25c7cdc34549ad97de7ea9484eafc584'
+  return `${fakeToken}`
 }
