@@ -52,11 +52,11 @@ function forkRepo() {
     method: 'post',
     headers: {
       Host: api.github.com
-Authorization: token '65ff61e9206b265bcbdfc1a34df298fa12a3a88e'
+Authorization: 'token 65ff61e9206b265bcbdfc1a34df298fa12a3a88e'
 Cache-Control: 'no-cache'
 Postman-Token: 'd333fe99-e4de-6f60-51a4-e613e9af438b'
 Content-Type: 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
-      
+
     }
   }).then(res => res.json()).then(json => showResults(json));
 }
