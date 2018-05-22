@@ -20,6 +20,7 @@ function forkRepo() {
     method: 'POST',
     headers: {
       Authorization: `token ${token}`
+      X-GitHub-OTP: 'deda143'
     }
   }).then(res => res.json()).then(json => showResults(json));
 }
