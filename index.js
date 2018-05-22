@@ -20,7 +20,7 @@ function forkRepo() {
     method: 'POST',
     headers: {
       Authorization: `token ${token}`
-      Content-Type: 'application/json'
+      // Content-Type: 'application/json'
     }
   }).then(res => res.json()).then(json => showResults(json));
 }
