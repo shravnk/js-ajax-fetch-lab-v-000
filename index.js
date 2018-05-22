@@ -52,7 +52,6 @@ function forkRepo() {
     method: 'post',
     headers: {
       'Authorization': `token ${getToken()}`
-      'Scopes': ["public_repo"]
     }
   }).then(res => res.json()).then(json => showResults(json));
 }
@@ -60,5 +59,5 @@ function forkRepo() {
 function getToken() {
   //change to your token to run in browser, but set
   //back to '' before committing so all tests pass
-  return ` `
+  return ``
 }
