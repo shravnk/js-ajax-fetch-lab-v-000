@@ -14,7 +14,7 @@ function showResults(json) {
 
 function forkRepo() {
   const token = getToken()
-  const repo = 'shravnk/js-ajax-hitting-apis-lab-v-000'
+  const repo = 'learn-co-curriculum/javascript-fetch-lab'
   const link = `https://api.github.com/repos/${repo}/forks`
   fetch(link, {
     method: 'POST',
