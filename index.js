@@ -52,7 +52,7 @@ function forkRepo() {
     method: 'post',
     headers: {
       'Authorization': `token ${getToken()}`
-      'Scopes': '["public_repo"]'
+      'Scopes': ["public_repo"]
     }
   }).then(res => res.json()).then(json => showResults(json));
 }
